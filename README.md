@@ -21,3 +21,4 @@ Signal WiFi du PC
 Sur Windows 11, l'affichage du nom et du signal WiFi du PC demande que la
 "Localisation" soit activée (Paramètres > Confidentialité et sécurité > Localisation).
 Le signal WiFi des Titans s'affiche dans tous les cas.
+https://github.com/MarcoCMG/izy_titan_buddy_windows/releases/download/Isypower/IzyPowerBuddy_v0.6_Windows_x64_v3.zip
