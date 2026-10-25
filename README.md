@@ -1,15 +1,23 @@
-﻿# IzyTitanBuddy - Édition 2026 (Windows) Version Béta 0.50
-Solutions de monitoring local pour batteries Titan par SOS82.
+﻿Nouvelle version 0.6
 
-## Téléchargement
-* [Version Portable (izytitanbuddy.exe)](./izytitanbuddy.exe) - Lancement immédiat sans installation.
-* [Version Installable (IzyTitanBuddy.msi)](./IzyTitanBuddy_0.5.0_x64_en-US.msi) - Installation complète sur Windows.
-* Il n'existe pas de version définitive pour l'instant donc la demande de licence complète est inutile.
+Ceci est la version Windows de l'application Android, une retouche graphique a été effectuée, elle est fonctionnelle et non limitée.
 
-## Informations sur la version d'essai
-Cette application est une version de démonstration fonctionnelle par sessions de **30 minutes**. 
- 
+Version Béta pour test.
+Izypower Titan Buddy - version Windows (v0.6.0)
+Installation
 
-## Installation
-Windows peut afficher une alerte "SmartScreen" au lancement. 
-Cliquez sur **Informations complémentaires** puis sur **Exécuter quand même**.
+Decompressez ce fichier ZIP dans un dossier (par ex. \IsypowerBuddy).
+Double-cliquez sur "Izypower Titan Buddy.exe".
+Au premier lancement, Windows SmartScreen peut afficher "Windows a protégé votre ordinateur" :
+cliquez sur "Informations complémentaires" puis "Exécuter quand même".
+Si le pare-feu Windows demande l'autorisation, cochez "Réseaux privés" et autorisez :
+c'est nécessaire pour trouver vos Titans et micro-onduleurs Deye sur le réseau local.
+Astuce : clic droit sur l'exe > "Envoyer vers" > "Bureau (créer un raccourci)".
+
+Le PC doit être connecté au même réseau (box / WiFi) que vos appareils.
+Vos réglages sont conservés entre deux lancements.
+
+Signal WiFi du PC
+Sur Windows 11, l'affichage du nom et du signal WiFi du PC demande que la
+"Localisation" soit activée (Paramètres > Confidentialité et sécurité > Localisation).
+Le signal WiFi des Titans s'affiche dans tous les cas.
