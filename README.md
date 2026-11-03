@@ -1,5 +1,9 @@
 ﻿Version 0.6 - Version Debug - fonctions expérimentales.
 
+ ### Note utile (Appareils Isypower)
+> Le remplacement de l'adresse du broker MQTT dans les appareils Isypower est **temporaire**. Il suffit simplement de les supprimer puis de les réajouter dans l'application **IsypowerCloud** pour rétablir automatiquement la configuration d'origine.
+
+
 Ceci est la version améliorée Windows de l'application Android, une retouche graphique a été effectuée, elle est fonctionnelle et non limitée.
 
 Version Béta pour test.
@@ -22,8 +26,38 @@ Sur Windows 11, l'affichage du nom et du signal WiFi du PC demande que la
 "Localisation" soit activée (Paramètres > Confidentialité et sécurité > Localisation).
 Le signal WiFi des Titans s'affiche dans tous les cas.
 
+
+## Release Notes – Version v9 03/11/2026
+
+Cette version test 9 apporte trois évolutions principales pour stabiliser l'affichage et enrichir les informations de la page **Global** :
+
+### 1. Affichage stabilisé des Titans (page Global)
+* **Fin des clignotements "Offline"** : en cas d'absence de réponse ponctuelle, l'application retente immédiatement la connexion. Les dernières valeurs restent affichées pendant que la batterie conserve son statut "Online".
+* **Indicateur de délai** : si le silence dure plus de 25 secondes, un petit message d'avertissement orange apparaît sur la carte (*"Pas de réponse depuis 35 s · dernières valeurs affichées"*).
+* **Mise en hors-ligne automatique** : au-delà de 5 minutes sans aucune réponse, le Titan repasse en "Offline" (pour éviter d'afficher comme actif un appareil débranché).
+
+### 2. Intégration des Micro-onduleurs (page Global)
+* Un bandeau dédié aux micro-onduleurs a été ajouté sous les 4 colonnes principales, optimisé pour s'intégrer parfaitement sur un écran Full HD sans défiler.
+* **Données affichées** : puissance en temps réel (déjà comptabilisée dans le total solaire), mini-graphique sur 3 heures, détail PV1/PV2, tension réseau, température, énergie totale produite et statut de connexion (Online/Offline).
+
+### 3. Mesures du Smart Meter (Compteur Intelligent)
+* **Lisibilité améliorée** : les valeurs disposent désormais de leurs noms réels et d'unités adaptées :
+  * Puissance active (W), réactive (var) et apparente (VA).
+  * Énergie consommée (achetée) et injectée (vendue) en kWh.
+  * Fréquence du réseau (Hz).
+  * Tension (V) et courant (A) détaillés par phase.
+* **Inversion du sens d'énergie** : par défaut, une puissance positive indique un achat sur le réseau. Si ton installation fonctionne à l'inverse, une option d'inversion est disponible directement sur la carte du compteur.
+
+---
+> **Note de test** : Cette version a été validée avec succès sur un environnement réel.
+> Le remplacement de l'adresse du broker dans les appareils Isypower est temporaire, le simple fait fait de les supprimer et de reajouter dans l'application IsypowerCloud permet de retablir la configuration d'origine.
+
+
+
+
+
 Nouveautés au 01/11/2026:
-zyTitanBuddy Desktop v6 – Nouveau tableau de bord
+IzyTitanBuddy Desktop test 7 – Nouveau tableau de bord
 Version Béta Debug - Certaines actions ne sont pas encore complètement fonctionnelles. MQTT par broker local -PID
 
 Le remplacement de l'IP du broker sur les appareils Izypower fait perdre temporairement le cloud constructeur. Pour le récupérer, il suffit de réassocier les appareils perdus dans l'application officielle Izypower Cloud.
@@ -68,14 +102,9 @@ Flux temps réel : Lignes animées reliant les panneaux solaires, les Titans, la
 
 Commandes PID : Interrupteur Marche/Arrêt, sélecteur Auto/Manuel, puissance cible sur le réseau, bande morte (deadband) et paramètres avancés. En cours d'exécution, affichage en direct de l'écart par rapport à la cible, de l'ordre envoyé à chaque Titan, d'un graphique de suivi et des journaux d'activité (logs).
 
-🧪 État des tests & Vérifications
-Ce qui a été testé : Validation avec deux Titans simulés, un compteur simulé, des panneaux solaires et un chargeur VE, testé sur 3 résolutions de fenêtres différentes. Tous les tests automatiques de l'application passent avec succès.
 
 Ce qui n'a pas été testé :
 
-Aucun test physique réalisé sur un véritable PC Windows ou avec votre matériel réel en conditions réelles.
-
-Les remontées de données des Titans ont été simulées, mais pas leurs réponses effectives aux ordres de régulation.
 
 ⚙️ Attention ! Fonctionnement du système de régulation PID - expérimental -
 Sécurité par défaut : La régulation est désactivée par défaut ; rien ne change tant que vous ne l'activez pas manuellement.
