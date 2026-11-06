@@ -1,134 +1,56 @@
-﻿Version 0.6 - Version Debug - fonctions expérimentales.
+﻿# IsyPowerBuddy – Version Windows (v0.6.0 - v12)
 
- ### Note utile (Appareils Isypower)
+Version bêta de test et de debug pour le monitoring local et le pilotage des installations solaires Isypower (Titans, Micro-onduleurs Deye, Compteur Intelligent et Borne de recharge EVSE).
+
+### ⚠️ Note utile (Appareils Isypower)
 > Le remplacement de l'adresse du broker MQTT dans les appareils Isypower est **temporaire**. Il suffit simplement de les supprimer puis de les réajouter dans l'application **IsypowerCloud** pour rétablir automatiquement la configuration d'origine.
 
+---
 
-Ceci est la version améliorée Windows de l'application Android, une retouche graphique a été effectuée, elle est fonctionnelle et non limitée.
+## Installation & Prérequis
 
-Version Béta pour test.
-Izypower Titan Buddy - version Windows (v0.6.0)
-Installation
+1. Décompressez le fichier ZIP dans un dossier dédié (par ex. `\IsypowerBuddy`).
+2. Double-cliquez sur **`Izypower Titan Buddy.exe`**.
+3. *Premier lancement :* Windows SmartScreen peut afficher une alerte de protection. Cliquez sur **« Informations complémentaires »** puis **« Exécuter quand même »**.
+4. *Pare-feu Windows :* Si une demande d'autorisation apparaît, cochez **« Réseaux privés »** et autorisez l'accès (nécessaire pour détecter vos Titans et micro-onduleurs sur le réseau local).
+5. *Astuce :* Clic droit sur l'exécutable > « Envoyer vers » > « Bureau (créer un raccourci) ».
 
-Decompressez ce fichier ZIP dans un dossier (par ex. \IsypowerBuddy).
-Double-cliquez sur "Izypower Titan Buddy.exe".
-Au premier lancement, Windows SmartScreen peut afficher "Windows a protégé votre ordinateur" :
-cliquez sur "Informations complémentaires" puis "Exécuter quand même".
-Si le pare-feu Windows demande l'autorisation, cochez "Réseaux privés" et autorisez :
-c'est nécessaire pour trouver vos Titans et micro-onduleurs Deye sur le réseau local.
-Astuce : clic droit sur l'exe > "Envoyer vers" > "Bureau (créer un raccourci)".
-
-Le PC doit être connecté au même réseau (box / WiFi) que vos appareils.
-Vos réglages sont conservés entre deux lancements.
-
-Signal WiFi du PC
-Sur Windows 11, l'affichage du nom et du signal WiFi du PC demande que la
-"Localisation" soit activée (Paramètres > Confidentialité et sécurité > Localisation).
-Le signal WiFi des Titans s'affiche dans tous les cas.
-
-
-## Release Notes – Version v9 03/11/2026
-
-Cette version test 9 apporte trois évolutions principales pour stabiliser l'affichage et enrichir les informations de la page **Global** :
-
-### 1. Affichage stabilisé des Titans (page Global)
-* **Fin des clignotements "Offline"** : en cas d'absence de réponse ponctuelle, l'application retente immédiatement la connexion. Les dernières valeurs restent affichées pendant que la batterie conserve son statut "Online".
-* **Indicateur de délai** : si le silence dure plus de 25 secondes, un petit message d'avertissement orange apparaît sur la carte (*"Pas de réponse depuis 35 s · dernières valeurs affichées"*).
-* **Mise en hors-ligne automatique** : au-delà de 5 minutes sans aucune réponse, le Titan repasse en "Offline" (pour éviter d'afficher comme actif un appareil débranché).
-
-### 2. Intégration des Micro-onduleurs (page Global)
-* Un bandeau dédié aux micro-onduleurs a été ajouté sous les 4 colonnes principales, optimisé pour s'intégrer parfaitement sur un écran Full HD sans défiler.
-* **Données affichées** : puissance en temps réel (déjà comptabilisée dans le total solaire), mini-graphique sur 3 heures, détail PV1/PV2, tension réseau, température, énergie totale produite et statut de connexion (Online/Offline).
-
-### 3. Mesures du Smart Meter (Compteur Intelligent)
-* **Lisibilité améliorée** : les valeurs disposent désormais de leurs noms réels et d'unités adaptées :
-  * Puissance active (W), réactive (var) et apparente (VA).
-  * Énergie consommée (achetée) et injectée (vendue) en kWh.
-  * Fréquence du réseau (Hz).
-  * Tension (V) et courant (A) détaillés par phase.
-* **Inversion du sens d'énergie** : par défaut, une puissance positive indique un achat sur le réseau. Si ton installation fonctionne à l'inverse, une option d'inversion est disponible directement sur la carte du compteur.
+> **Signal Wi-Fi du PC (Windows 11) :** L'affichage du nom et du signal Wi-Fi du PC nécessite que la **Localisation** soit activée (`Paramètres > Confidentialité et sécurité > Localisation`). Le signal Wi-Fi des Titans s'affiche dans tous les cas.
 
 ---
-> **Note de test** : Cette version a été validée avec succès sur un environnement réel.
-> Le remplacement de l'adresse du broker dans les appareils Isypower est temporaire, le simple fait fait de les supprimer et de reajouter dans l'application IsypowerCloud permet de retablir la configuration d'origine.
 
+## Nouveautés de la Version v12 (Majeure)
 
+### 1. Commandes MQTT intégrées pour les 3 appareils
+Dans la section **« Appareils MQTT »**, un nouveau bouton **« Commandes »** ouvre une fenêtre de pilotage complète :
+* **Général (3 appareils) :** Rafraîchissement ponctuel (2 minutes à la seconde) et redémarrage de l'appareil.
+* **Borne de recharge :** Démarrer ou arrêter la charge, régler la puissance maximale (1 380 W à 7 360 W par paliers de 230 W), choisir le mode de contrôle (*Intelligent, Manuel, Hybride*) et les sources d'énergie autorisées.
+* **Smart Meter :** Activation/désactivation du zéro injection (avec seuil), configuration des phases et mode de pilotage de la batterie.
+* **Lecture des paramètres :** Permet de récupérer et d'afficher les réglages actuels de la borne et du compteur.
+* *Retour d'état :* Chaque commande affiche sa réponse en direct (*« OK »*, *« Refusé »* avec la raison, ou *« Pas de réponse »* après 15 s). Lorsqu'un réglage est validé, l'application met automatiquement à jour l'affichage.
 
+### 2. Sélecteur de rythme de rafraîchissement
+Sur chaque fiche d'appareil MQTT, vous pouvez basculer entre deux modes :
+* **« 2 min »** : Mode par défaut de l'appareil (économie de trafic).
+* **« Permanente »** : Renvoie un rafraîchissement toutes les 105 s pour obtenir des données en flux continu chaque seconde. Ce choix est mémorisé au redémarrage de l'application. Un indicateur visuel vert (*« Rapide · encore 80 s »*) confirme l'état.
 
+### 3. Choix du Compteur Réseau sur la page Globale
+Dans le **« Bilan énergétique »**, un nouveau sélecteur **« Compteur réseau »** permet de choisir la source des données :
+* Basculez au choix entre les informations issues de la **batterie T1** ou du **Smart Meter** récupéré via les appareils MQTT. La régulation globale utilise directement la source sélectionnée.
 
-Nouveautés au 01/11/2026:
-IzyTitanBuddy Desktop test 7 – Nouveau tableau de bord
-Version Béta Debug - Certaines actions ne sont pas encore complètement fonctionnelles. MQTT par broker local -PID
+---
 
-Le remplacement de l'IP du broker sur les appareils Izypower fait perdre temporairement le cloud constructeur. Pour le récupérer, il suffit de réassocier les appareils perdus dans l'application officielle Izypower Cloud.
+## Historique des Versions Récentes
 
-La nouvelle version v6 de l'application de bureau est prête ! Cette mise en majuscule globale repense l'interface pour l'adapter dynamiquement à toutes les tailles d'écran, tout en intégrant un système test de régulation PID.
+### Release Notes – Version v9 & v10 & v11
+* **Stabilité des Titans (Page Global) :** Fin des clignotements "Offline" en cas de coupure de communication. Maintien des dernières valeurs avec un indicateur orange (*"Pas de réponse depuis 35 s"*) et retour en mode "Offline" automatique après 5 minutes d'absence totale.
+* **Bandeau Micro-onduleurs :** Ajout d'un bandeau compact sous les 4 colonnes (visible en Full HD) affichant la puissance temps réel, un mini-graphique sur 3 h, les détails PV1/PV2, tension, température et énergie totale.
+* **Smart Meter & Borne EVSE :** Traduction complète en français des libellés et des échelles (puissances active/réactive/apparente, tensions, courants par phase, énergies, états de la borne et du relais).
 
-🖥️ Adaptabilité de l'affichage (Responsive Design)
-Sur un grand écran, l'onglet Global affiche désormais 4 colonnes côte à côte :
+---
 
-Bilan énergétique
+## Rappel des Fonctionnalités du Tableau de Bord (v6+)
 
-Titans
-
-Flux temps réel
-
-Commandes PID
-
-Écrans moyens : 2 colonnes.
-
-Petits écrans : 1 colonne.
-
-Confort visuel : Les cartes s'ajustent automatiquement à la hauteur de la fenêtre pour éliminer tout besoin de défilement vertical (no-scroll). L'application s'ouvre désormais plus grande, et en mode maximisé sur les grands écrans.
-
-Graphismes vectoriels : Tout est rendu en vectoriel pour garantir un affichage parfaitement net en Full HD, 2K et 4K.
-
-📦 Contenu de la mise en page & des onglets
-Bilan énergétique : Production solaire, consommation de la maison, réseau et batteries. Chaque donnée possède son code couleur dédié :
-
-🟢 Vert : Surplus / réinjection
-
-🔵 Bleu : Charge
-
-🟠 Orange : Consommation de la maison
-
-🔴 Rouge : Importation réseau
-
-Indicateurs inclus : Taux d'autoconsommation, autonomie, totaux journaliers et graphique de la dernière heure.
-
-Titans : Une jauge circulaire pour l'état de charge global (%), suivie d'une carte détaillée par Titan (charge, puissance, température, signal Wi-Fi et état de chaque Link). Un clic sur une carte ouvre la page dédiée du Titan.
-
-Flux temps réel : Lignes animées reliant les panneaux solaires, les Titans, la maison, le réseau et le chargeur VE. La vitesse des flux s'accélère dynamiquement en fonction de la puissance transitée.
-
-Commandes PID : Interrupteur Marche/Arrêt, sélecteur Auto/Manuel, puissance cible sur le réseau, bande morte (deadband) et paramètres avancés. En cours d'exécution, affichage en direct de l'écart par rapport à la cible, de l'ordre envoyé à chaque Titan, d'un graphique de suivi et des journaux d'activité (logs).
-
-
-Ce qui n'a pas été testé :
-
-
-⚙️ Attention ! Fonctionnement du système de régulation PID - expérimental -
-Sécurité par défaut : La régulation est désactivée par défaut ; rien ne change tant que vous ne l'activez pas manuellement.
-
-Comportement en mode test :
-
-L'activation bascule les Titans en mode "Temps réel" et leur transmet des ordres de charge ou de décharge.
-
-La puissance est répartie proportionnellement à la capacité des batteries .
-
-La désactivation remet les batteries en mode "Autoconsommation".
-
-Contrainte technique : L'application doit rester ouverte sur le bureau pour que la boucle de régulation active continue de tourner.
-
-⚠️ Avertissement avant utilisation
-Avant de confier le pilotage complet à l'application :
-
-Surveillez attentivement les premières minutes lors de l'activation de la régulation.
-
-Vérifiez que la puissance réseau se maintient bien proche de votre cible et que les Titans s'exécutent correctement en suivant les consignes de la boucle PID.
-
-
-
-
-
-
+* **Responsive Design 4 Colonnes** (sur grands écrans) : Bilan énergétique, Titans, Flux temps réel et Commandes PID.
+* **Régulation PID (Expérimental) :** Permet d'ajuster dynamiquement la charge/décharge des batteries par rapport à une puissance cible sur le réseau (désactivé par défaut).
 https://github.com/MarcoCMG/izy_titan_buddy_windows/releases/download/IzyTitanBuddy/IzyPowerBuddy_v0.6_Windows_x64_v6.zip
