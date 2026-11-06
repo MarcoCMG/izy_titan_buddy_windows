@@ -53,4 +53,4 @@ Dans le **« Bilan énergétique »**, un nouveau sélecteur **« Compteur rése
 
 * **Responsive Design 4 Colonnes** (sur grands écrans) : Bilan énergétique, Titans, Flux temps réel et Commandes PID.
 * **Régulation PID (Expérimental) :** Permet d'ajuster dynamiquement la charge/décharge des batteries par rapport à une puissance cible sur le réseau (désactivé par défaut).
-https://github.com/MarcoCMG/izy_titan_buddy_windows/releases/download/IzyTitanBuddy/IzyPowerBuddy_v0.6_Windows_x64_v6.zip
+
