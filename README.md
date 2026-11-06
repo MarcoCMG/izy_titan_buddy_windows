@@ -10,7 +10,7 @@ Version bêta de test et de debug pour le monitoring local et le pilotage des in
 ## Installation & Prérequis
 
 1. Décompressez le fichier ZIP dans un dossier dédié (par ex. `\IsypowerBuddy`).
-2. Double-cliquez sur **`Izypower Titan Buddy.exe`**.
+2. Double-cliquez sur **`IzypowerBuddy.exe`**.
 3. *Premier lancement :* Windows SmartScreen peut afficher une alerte de protection. Cliquez sur **« Informations complémentaires »** puis **« Exécuter quand même »**.
 4. *Pare-feu Windows :* Si une demande d'autorisation apparaît, cochez **« Réseaux privés »** et autorisez l'accès (nécessaire pour détecter vos Titans et micro-onduleurs sur le réseau local).
 5. *Astuce :* Clic droit sur l'exécutable > « Envoyer vers » > « Bureau (créer un raccourci) ».
